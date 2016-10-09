@@ -7,7 +7,7 @@ This project provides some examples in Swift for iOS. With Swift now officially 
 Audience
 ---------------------
 
-As a developer, you should already be familiar with this pieces of code. This code is Open Source. It's Reusable. Use it in your apps.
+As a developer, you should already be familiar with these pieces of code. This code is Open Source. It's Reusable. Use it in your apps.
 
 Features
 ---------------------
@@ -16,11 +16,14 @@ The project features code-level examples for the following items:
 
 + Classes and Structures
 + Protocols and delegates
++ ActionSheet
 + AirDrop
++ AlertViewController
 + AVFoundation (QRCode)
 + QuartzCore (Animation with collision)
 + Calendar
 + Chat Peer to Peer
++ Check Connectivity
 + CollectionView
 + CoreAnimation (some examples)
 + CoreData (some examples)
@@ -37,6 +40,7 @@ The project features code-level examples for the following items:
 + NSFileManager
 + NSNotification
 + NSURLSession
++ NSUserDefault
 + SQLite
 + Segues (normal and custom segues)
 + Show Local IP
@@ -62,7 +66,7 @@ I plan to write further additional examples and all developers are welcome to fo
 Getting Started
 ---------------------
 
-Running in Xcode 7.0 and iOS 9.0
+Running in Xcode 7.2 and iOS 9.2
 
 
 Usage
@@ -77,6 +81,17 @@ Branches
 master - The production branch. Clone or fork this repository for the latest copy
 develop - The active development branch. Pull requests should be directed to this branch
 
+License
+----
+
+[The MIT License (MIT)](https://github.com/carlbutron/Swift/blob/master/LICENSE.md)
+ 
+Contributing
+----
+
+We'd love to see your ideas for improving this repo! The best way to contribute is by submitting a pull request. We'll do our best to respond to your patch as soon as possible. You can also submit a [new GitHub issue](https://github.com/carlbutron/Swift/issues/new) if you find bugs. :octocat:
+
+Please make sure to follow our general coding style and add test coverage for new features!
 
 Questions
 ---------------------

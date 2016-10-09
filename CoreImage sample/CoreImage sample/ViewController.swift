@@ -11,63 +11,54 @@ import CoreImage
 
 class ViewController: UIViewController {
     
-    
     //SLIDER TO FIRST AND SECOND FILTER
     //when you do slider value change
     //then push in filter button  "sepia" or "vignette" to apply it
-    
     var sliderValue: Float = 0.0
     
     @IBOutlet weak var myImage: UIImageView!
     
-    @IBAction func sepia(sender: UIButton) {
+    @IBAction func sepia(_ sender: UIButton) {
         applyfilter(1);
     }
     
-    @IBAction func vignette(sender: UIButton) {
+    @IBAction func vignette(_ sender: UIButton) {
         applyfilter(2);
     }
     
-    
-    @IBAction func invert(sender: UIButton) {
+    @IBAction func invert(_ sender: UIButton) {
         applyfilter(3);
     }
     
-    @IBAction func photo(sender: UIButton) {
+    @IBAction func photo(_ sender: UIButton) {
         applyfilter(4);
     }
     
-    @IBAction func perspective(sender: UIButton) {
+    @IBAction func perspective(_ sender: UIButton) {
         applyfilter(5);
     }
     
-    @IBAction func gaussian(sender: UIButton) {
+    @IBAction func gaussian(_ sender: UIButton) {
         applyfilter(6);
     }
     
-    @IBAction func slider(sender: UISlider) {
-        
+    @IBAction func slider(_ sender: UISlider) {
         sliderValue = sender.value
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    
-    func applyfilter(numberFilter: Int) {
+    func applyfilter(_ numberFilter: Int) {
         
-        let filePath : NSString = NSBundle.mainBundle().pathForResource("image", ofType: "jpg")!
-        let fileUrl : NSURL = NSURL (fileURLWithPath: filePath as String)
-        let inputImage : CIImage = CIImage (contentsOfURL: fileUrl)!
+        let filePath : String = Bundle.main.path(forResource: "image", ofType: "jpg")!
+        let fileUrl : URL = URL (fileURLWithPath: filePath as String)
+        let inputImage : CIImage = CIImage (contentsOf: fileUrl)!
         
         switch numberFilter {
         case 1:
@@ -75,59 +66,44 @@ class ViewController: UIViewController {
             //var filter : CIFilter = CIFilter (name: "CISepiaTone")
             filter!.setValue(inputImage, forKey: kCIInputImageKey)
             filter!.setValue(sliderValue, forKey: "InputIntensity")
-            let outputImage : CIImage = filter!.valueForKey(kCIOutputImageKey) as! CIImage
-            let img : UIImage = UIImage (CIImage: outputImage)
+            let outputImage : CIImage = filter!.value(forKey: kCIOutputImageKey) as! CIImage
+            let img : UIImage = UIImage (ciImage: outputImage)
             myImage.image = img
         case 2:
             let filter : CIFilter = CIFilter (name: "CIVignette")!
             filter.setValue(inputImage, forKey: kCIInputImageKey)
             filter.setValue(sliderValue, forKey: "InputRadius")
             filter.setValue(sliderValue, forKey: "InputIntensity")
-            let outputImage : CIImage = filter.valueForKey(kCIOutputImageKey) as! CIImage
-            let img : UIImage = UIImage (CIImage: outputImage)
+            let outputImage : CIImage = filter.value(forKey: kCIOutputImageKey) as! CIImage
+            let img : UIImage = UIImage (ciImage: outputImage)
             myImage.image = img
         case 3:
             let filter : CIFilter = CIFilter (name: "CIColorInvert")!
             filter.setValue(inputImage, forKey: kCIInputImageKey)
-            let outputImage : CIImage = filter.valueForKey(kCIOutputImageKey) as! CIImage
-            let img : UIImage = UIImage (CIImage: outputImage)
+            let outputImage : CIImage = filter.value(forKey: kCIOutputImageKey) as! CIImage
+            let img : UIImage = UIImage (ciImage: outputImage)
             myImage.image = img
         case 4:
             let filter : CIFilter = CIFilter (name: "CIPhotoEffectMono")!
             filter.setValue(inputImage, forKey: kCIInputImageKey)
-            
-            let outputImage : CIImage = filter.valueForKey(kCIOutputImageKey) as! CIImage
-            let img : UIImage = UIImage (CIImage: outputImage)
+            let outputImage : CIImage = filter.value(forKey: kCIOutputImageKey) as! CIImage
+            let img : UIImage = UIImage (ciImage: outputImage)
             myImage.image = img
         case 5:
             let filter : CIFilter = CIFilter (name: "CIPerspectiveTransform")!
             filter.setValue(inputImage, forKey: kCIInputImageKey)
-            
-            let outputImage : CIImage = filter.valueForKey(kCIOutputImageKey) as! CIImage
-            let img : UIImage = UIImage (CIImage: outputImage)
+            let outputImage : CIImage = filter.value(forKey: kCIOutputImageKey) as! CIImage
+            let img : UIImage = UIImage (ciImage: outputImage)
             myImage.image = img
         case 6:
             let filter : CIFilter = CIFilter (name: "CIGaussianBlur")!
             filter.setValue(inputImage, forKey: kCIInputImageKey)
-            
-            let outputImage : CIImage = filter.valueForKey(kCIOutputImageKey) as! CIImage
-            let img : UIImage = UIImage (CIImage: outputImage)
+            let outputImage : CIImage = filter.value(forKey: kCIOutputImageKey) as! CIImage
+            let img : UIImage = UIImage (ciImage: outputImage)
             myImage.image = img
         default:
             print("test")
-            
         }
-        
-        
-        
-        
-        
-        
-        
     }
-    
-    
-    
-    
-}
 
+}
